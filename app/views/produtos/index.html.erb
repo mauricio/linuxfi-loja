@@ -1,0 +1,30 @@
+<% unless @produtos.blank? %>
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        Nome
+      </th>
+      <th>
+        Preço
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @produtos.each do |produto| %>
+    <tr>
+      <td>
+        <%= produto.nome %>
+      </td>
+      <td>
+        <%= produto.preco %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% else %>
+  <p> Não há nenhum produto cadastrado no sistema. </p>
+<% end %>
