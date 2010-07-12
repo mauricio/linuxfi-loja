@@ -3,10 +3,13 @@
     <title>
       <%= @titulo %> | Loja
     </title>
+
+    <%= yield :stylesheets %>
+
   </head>
   <body>
 
-    <h1> <%= @titulo %> | Loja </h1>
+    <h1> <%= yield :cabecalho %>  | Loja </h1>
 
     <%= yield %>
     
