@@ -1,0 +1,32 @@
+<% content_for :cabecalho do %>
+  Meu Carrinho
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <td> Nome </td>
+      <td> Quantidade </td>
+      <td> Preço unitário </td>
+      <td> Preço total </td>
+    </tr>
+  </thead>
+  <tbody>
+    <% pedido_atual.itens.each do |item| %>
+    <tr>
+      <td>
+        <%= item.produto.nome %>
+      </td>
+      <td>
+        <%= item.quantidade %>
+      </td>
+      <td>
+        <%= number_to_currency item.produto.preco %>
+      </td>
+      <td>
+        <%= number_to_currency item.preco_total %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

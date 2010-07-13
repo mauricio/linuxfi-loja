@@ -11,6 +11,12 @@
 
     <h1> <%= yield :cabecalho %>  | Loja </h1>
 
+    <% unless flash.blank? %>
+      <% flash.each do |key,value| %>
+        <p class="flash_<%= key %>"> <%= value %>  </p>
+      <% end %>
+    <% end %>
+
     <%= yield %>
     
   </body>
