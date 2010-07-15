@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'produtos', :action => 'index'
 
   map.resources :produtos
-  map.resources :itens
+  map.resources :itens, :collection => { :atualizar_pedido => :post }
 
   map.connect ':controller/:action'
   map.connect ':controller/:action.:format'
