@@ -11,11 +11,7 @@
 
     <h1> <%= yield :cabecalho %>  | Loja </h1>
 
-    <% unless flash.blank? %>
-      <% flash.each do |key,value| %>
-        <p class="flash_<%= key %>"> <%= value %>  </p>
-      <% end %>
-    <% end %>
+    <%= render 'compartilhados/flash' %>
 
     <ul>
       <li> <%= link_to 'Produtos', produtos_path %>  </li>

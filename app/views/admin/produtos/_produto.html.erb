@@ -1,0 +1,11 @@
+<tr>
+  <td> <%= produto.nome %>  </td>
+  <td> <%= number_to_currency produto.preco %> </td>
+  <td>
+    <%= link_to 'Editar', edit_admin_produto_path(produto) %> |
+    <%= link_to 'Remover',
+      admin_produto_path(produto),
+      :method => :delete,
+      :confirm => 'Tem certeza de que deseja remover este produto?' %>
+  </td>
+</tr>

@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>
+      <%= @titulo %> | Administração da Loja
+    </title>
+
+    <%= yield :stylesheets %>
+
+  </head>
+  <body>
+
+    <h1> <%= yield :cabecalho %>  | Administração </h1>
+
+    <%= render 'compartilhados/flash' %>
+
+    <%= yield %>
+
+  </body>
+</html>

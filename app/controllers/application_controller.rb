@@ -20,4 +20,15 @@ class ApplicationController < ActionController::Base
     @pedido_atual
   end
 
+  def load_page
+    @page     = params[:page] || 1
+    @per_page = params[:per_page] || 10
+  end
+
+  def paginate( scope, options = {} )
+    load_page
+    scope.paginate( { :page => @page, :per_page => @per_page }.merge( options ) )
+  end
+
+
 end

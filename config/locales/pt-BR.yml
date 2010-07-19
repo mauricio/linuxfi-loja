@@ -141,6 +141,12 @@ pt-BR:
     
   # ActiveRecord
   activerecord:
+    models:
+      produto: Produto
+    attributes:
+      produto:
+        preco: Preço
+        descricao: Descrição
     errors:
       template:
         header:

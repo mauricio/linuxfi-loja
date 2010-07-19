@@ -1,0 +1,21 @@
+<% content_for :cabecalho do %>
+  Listagem de Produtos
+<% end %>
+
+<% unless @produtos.blank? %>
+
+
+  <%= will_paginate @produtos %>
+
+  <table>
+    <%= cabecalho_de_tabela 'Nome', 'Preço', 'Ações' %>
+    <tbody>
+      <%= render @produtos %>
+    </tbody>
+  </table>
+
+  <%= will_paginate @produtos %>
+
+<% else %>
+  <p> Não há produtos cadastrados no sistema. </p>
+<% end %>
