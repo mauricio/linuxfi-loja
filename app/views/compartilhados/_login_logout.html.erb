@@ -1,0 +1,18 @@
+<% if logged_in? %>
+  <p>
+    Olá <%= usuario_atual.nome %>, seja bem vindo!
+    <br/>
+    <%= link_to 'Clique aqui para atualizar os seus dados de usuário', usuario_path %>
+  </p>
+
+  <p>
+    <%= link_to 'Logoff', sessao_path, :method => :delete, :confirm => 'Tem certeza de que deseja sair da aplicação?' %>
+  </p>
+
+<% else %>
+  <p>
+    <%= link_to 'Já é usuário? Clique aqui para fazer login', sessao_path %>
+    |
+    <%= link_to 'Ainda não é usuário? Clique aqui para se cadastrar', usuario_path %>
+  </p>
+<% end %>

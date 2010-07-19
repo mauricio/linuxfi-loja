@@ -13,6 +13,8 @@
 
     <%= render 'compartilhados/flash' %>
 
+    <%= render 'compartilhados/login_logout' %>
+
     <ul>
       <li> <%= link_to 'Produtos', produtos_path %>  </li>
       <% unless pedido_atual.blank? %>

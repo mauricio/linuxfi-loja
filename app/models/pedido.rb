@@ -23,7 +23,6 @@ class Pedido < ActiveRecord::Base
   end
 
   def preco_total
-    #self.itens.to_a.sum { |item| item.preco_total }
     self.itens.to_a.sum( &:preco_total )
   end
 
@@ -31,6 +30,12 @@ class Pedido < ActiveRecord::Base
     self.itens.blank?
   end
 
+  def unir( outro_pedido )
+    outro_pedido.itens.each do |item|
+      self.adicionar_produto(item.produto, item.quantidade)
+    end
+    self.save
+  end
   protected
 
   def remover_itens_zerados

@@ -1,0 +1,20 @@
+
+<% form_tag sessao_path do %>
+
+  <p>
+    Email:
+    <br/>
+    <%= text_field_tag :email, params[:email] %>
+  </p>
+
+  <p>
+    Senha:
+    <br/>
+    <%= password_field_tag :senha %>
+  </p>
+
+  <p>
+    <%= submit_tag 'Enviar' %>
+  </p>
+
+<% end %>

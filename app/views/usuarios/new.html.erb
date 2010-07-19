@@ -1,0 +1,41 @@
+
+<% form_for @usuario, :url => usuario_path, :html => { :method => :post} do |f| %>
+
+  <%= f.error_messages %>
+
+  <p>
+    Nome:
+    <br/>
+    <%= f.text_field :nome %>
+  </p>
+
+  <p>
+    Email:
+    <br/>
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    Senha:
+    <br/>
+    <%= f.password_field :senha %>
+  </p>
+
+  <p>
+    Confirme a senha:
+    <br/>
+    <%= f.password_field :senha_confirmation %>
+  </p>
+
+  <% if @usuario.new_record? %>
+
+    <p>
+      <%= f.check_box :termos_e_condicoes %>
+      Eu li e aceito os termos e condições
+    </p>
+
+  <% end %>
+
+  <p> <%= submit_tag 'Enviar' %>  </p>
+
+<% end %>

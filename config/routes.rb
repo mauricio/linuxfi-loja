@@ -5,6 +5,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :produtos
   map.resources :itens, :collection => { :atualizar_pedido => :post }
 
+  map.resource :sessao
+  map.resource :usuario
+
   map.namespace :admin do |admin|
     admin.resources :produtos
   end

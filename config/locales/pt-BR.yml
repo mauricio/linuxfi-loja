@@ -143,10 +143,17 @@ pt-BR:
   activerecord:
     models:
       produto: Produto
+      usuario:
+        one: Usuário
+        other: Usuários
     attributes:
       produto:
         preco: Preço
         descricao: Descrição
+      usuario:
+        senha_confirmation: Confirmação de Senha
+        senha_em_hash: Senha
+        termos_e_condicoes: Termos e Condições
     errors:
       template:
         header:
