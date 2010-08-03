@@ -5,17 +5,8 @@ class Pedido < ActiveRecord::Base
   accepts_nested_attributes_for :itens
   after_save :remover_itens_zerados
 
-  # def itens_attributes=( array )
-  # def endereco_attributes=( array )
-  #   accepts_nested_attributes_for :endereco
-  #   pedido[endereco_attributes][nome]
-  #   pedido[endereco_attributes][cidade]
-  #   pedido[endereco_attributes][estado]
-  #   pedido[endereco_attributes][pais]
-
-
   def adicionar_produto( produto, quantidade )
-    if item = self.itens.detect { |i| i.produto == produto }
+    if item = self.item_por_produto( produto )
       item.update_attributes(:quantidade => quantidade + item.quantidade)
     else
       self.itens.build( :produto_id => produto.id, :quantidade => quantidade )
@@ -36,6 +27,11 @@ class Pedido < ActiveRecord::Base
     end
     self.save
   end
+
+  def item_por_produto( produto )
+    self.itens.detect { |i| i.produto == produto }
+  end
+
   protected
 
   def remover_itens_zerados
