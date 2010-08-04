@@ -17,6 +17,10 @@ class Pedido < ActiveRecord::Base
     self.itens.to_a.sum( &:preco_total )
   end
 
+  def total_de_itens
+    self.itens.to_a.sum(&:quantidade)
+  end
+
   def blank?
     self.itens.blank?
   end

@@ -13,14 +13,23 @@
     </thead>
     <tbody>
       <% @produtos.each do |produto| %>
-        <tr>
-          <td><%= produto.nome  %> </td>
+      <tr id="<%= dom_id produto %>">
+          <td><%= produto.nome %> </td>
           <td><%= number_to_currency produto.preco  %> </td>
           <td>
-            <% form_tag itens_path, :method => :post do %>
+            <% form_remote_tag(
+              :url => itens_path,
+              :before => "jQuery( '#produto_loader_#{produto.id}' ).show();",
+              :complete => "jQuery( '#produto_loader_#{produto.id}' ).hide();",
+              :html => {:method => :post} ) do %>
               <%= hidden_field_tag( :produto_id, produto.id ) %>
               <%= text_field_tag( :quantidade, 1 ) %>
               <%= submit_tag "Adicionar" %>
+              <%= image_tag(
+                'ajax-loader.gif',
+                :id => "produto_loader_#{produto.id}",
+                :style => "display:none;"
+              ) %>
             <% end %>
           </td>
         </tr>

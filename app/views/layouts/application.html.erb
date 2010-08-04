@@ -3,26 +3,18 @@
     <title>
       <%= @titulo %> | Loja
     </title>
-
     <%= yield :stylesheets %>
-
+    <%= javascript_include_tag 'jquery', 'jquery-ui', 'jquery-form', 'application' %>
   </head>
   <body>
 
     <h1> <%= yield :cabecalho %>  | Loja </h1>
 
-    <%= render 'compartilhados/flash' %>
+    <%= render_flash %>
 
     <%= render 'compartilhados/login_logout' %>
 
-    <ul>
-      <li> <%= link_to 'Produtos', produtos_path %>  </li>
-      <% unless pedido_atual.blank? %>
-        <li>
-          <%= link_to( "Veja o seu carrinho", itens_path ) %>
-        </li>
-      <% end %>
-    </ul>
+    <%= render 'compartilhados/menu' %>
 
     <%= yield %>
 
