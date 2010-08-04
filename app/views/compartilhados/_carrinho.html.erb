@@ -1,0 +1,15 @@
+<% unless pedido_atual.blank? %>
+  <p>
+    O seu carrinho tem <%= pedido_atual.total_de_itens %> produtos adicionados.
+    <br/>
+    <%= link_to(
+      'Clique aqui para ver a lista',
+      'javascript:void(0)',
+      :onclick => 'jQuery( "#carrinho_produtos").toggle(); return false;' ) %>
+  </p>
+  <ul id="carrinho_produtos" style="display:none;">
+    <% pedido_atual.itens.each do |item| %>
+      <li> <%= item.produto.nome %> - <%= item.quantidade  %> </li>
+    <% end %>
+  </ul>
+<% end %>

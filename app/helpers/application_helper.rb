@@ -6,4 +6,8 @@ module ApplicationHelper
     content_tag( :thead, content_tag( :tr, linhas.join("\n") ) )
   end
 
+  def render_flash
+    render 'compartilhados/flash', :flash => flash
+  end
+
 end

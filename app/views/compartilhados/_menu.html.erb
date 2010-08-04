@@ -1,0 +1,12 @@
+<ul>
+  <li> <%= link_to 'Produtos', produtos_path %>  </li>
+  <% unless pedido_atual.blank? %>
+    <li>
+      <%= link_to( "Veja o seu carrinho", itens_path ) %>
+    </li>
+  <% end %>
+</ul>
+
+<div id="carrinho">
+  <%= render "compartilhados/carrinho" %>
+</div>

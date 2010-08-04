@@ -1,0 +1,2 @@
+page.replace_html( :carrinho, :text => "compartilhados/carrinho" )
+page.visual_effect( :highlight, :carrinho, :duration => 3.0 )
