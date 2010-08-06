@@ -20,7 +20,7 @@ Given /^(?:|Eu )que estou na (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
-When /^(?:|Eu )vou para (.+)$/ do |page_name|
+When /^(?:|Eu )vou pra (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
@@ -30,7 +30,7 @@ When /^(?:|Eu )pressiono "([^\"]*)"(?: em "([^\"]*)")?$/ do |button, selector|
   end
 end
 
-When /^(?:|Eu )clico "([^\"]*)"(?: em "([^\"]*)")?$/ do |link, selector|
+When /^(?:|Eu )clico em "([^\"]*)"(?: em "([^\"]*)")?$/ do |link, selector|
   with_scope(selector) do
     click_link(link)
   end

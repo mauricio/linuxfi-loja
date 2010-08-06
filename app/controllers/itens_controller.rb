@@ -16,6 +16,14 @@ class ItensController < ApplicationController
     ir_para_carrinho( "Carrinho atualizado som sucesso" )
   end
 
+  def destroy
+    @item = pedido_atual.itens.find(params[:id])
+    @item.destroy
+    respond_to do |format|
+      format.js
+    end
+  end
+
   protected
 
   def ir_para_carrinho( mensagem )

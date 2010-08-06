@@ -5,3 +5,8 @@
 #   
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
+Produto.create!( [
+    { :nome => "Agile Software Development", :preco => 30 },
+    { :nome => "Dark Sun Campaign Setting", :preco => 25 },
+    { :nome => "Neuromancer", :preco => 20}
+  ] )

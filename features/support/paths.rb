@@ -6,6 +6,8 @@ module NavigationHelpers
       '/'
     when 'listagem de produtos'
       produtos_path
+    when 'página do carrinho'
+      itens_path
     when /página de (.*)/
       case $1
       when 'login'

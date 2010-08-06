@@ -16,3 +16,12 @@ Funcionalidade: Adicionar e remover itens do carrinho
     Dado que estou na listagem de produtos
     Quando adiciono "5" itens do produto "Lean Software Development" ao carrinho
     Então devo ver "Lean Software Development - 5"
+
+  Cenário: Remover itens do carrinho
+    Dado que estou na listagem de produtos
+      E adiciono "5" itens do produto "Lean Software Development" ao carrinho
+      E adiciono "5" itens do produto "Agile Estimating and Planning" ao carrinho
+    Quando vou pra página do carrinho
+      E removo o produto "Agile Estimating and Planning" do carrinho
+    Entao devo ver "Lean Software Development"
+      Mas não devo ver "Agile Estimating and Planning"

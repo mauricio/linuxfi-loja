@@ -9,7 +9,9 @@
   </p>
   <ul id="carrinho_produtos" style="display:none;">
     <% pedido_atual.itens.each do |item| %>
-      <li> <%= item.produto.nome %> - <%= item.quantidade  %> </li>
+      <li id="<%= dom_id(item.produto, :carrinho)  %>"> 
+        <%= item.produto.nome %> - <%= item.quantidade  %>
+      </li>
     <% end %>
   </ul>
 <% end %>

@@ -1,0 +1,4 @@
+page.visual_effect( :blind_up, dom_id(@item.produto), :duration => 1.5 )
+page.delay( 2 ) do
+  page.remove( dom_id(@item.produto), dom_id(@item.produto, :carrinho) )
+end
