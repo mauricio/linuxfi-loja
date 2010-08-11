@@ -1,0 +1,11 @@
+<% content_for :cabecalho do %>
+  Produto: <%= @produto.nome %>
+<% end %>
+
+<% if @produto.imagem.file?  %>
+  <%= image_tag @produto.imagem.url( :medium ) %>
+<% end %>
+
+<p>
+  <%= @produto.descricao %>
+</p>

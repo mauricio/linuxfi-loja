@@ -7,7 +7,10 @@ module Admin::ProdutosHelper
     else
       [admin_produto_path( @produto ), :put]
     end
-    form_for( @produto, :url => opcoes.first, :html => { :method => opcoes.last }, &block )
+    form_for( @produto, 
+      :url => opcoes.first,
+      :html => { :method => opcoes.last, :multipart => true },
+      &block )
   end
 
 end

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100719035010) do
+ActiveRecord::Schema.define(:version => 20100811203948) do
 
   create_table "itens", :force => true do |t|
     t.integer  "produto_id", :null => false
@@ -31,11 +31,15 @@ ActiveRecord::Schema.define(:version => 20100719035010) do
   add_index "pedidos", ["usuario_id"], :name => "index_pedidos_on_usuario_id"
 
   create_table "produtos", :force => true do |t|
-    t.string   "nome",                                      :null => false
+    t.string   "nome",                                               :null => false
     t.text     "descricao"
-    t.decimal  "preco",      :precision => 10, :scale => 2, :null => false
+    t.decimal  "preco",               :precision => 10, :scale => 2, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "imagem_file_name"
+    t.string   "imagem_content_type"
+    t.integer  "imagem_file_size"
+    t.datetime "imagem_updated_at"
   end
 
   create_table "usuarios", :force => true do |t|
