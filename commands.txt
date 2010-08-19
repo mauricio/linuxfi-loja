@@ -1,0 +1,42 @@
+# capify project
+capify .
+#setup deploy.rb file
+
+apt-get update && apt-get upgrade -y
+apt-get install language-pack-pt
+
+apt-get install ruby-full -y
+
+#download e instalar rubygems
+
+scp .ssh/id_rsa.pub root@184.106.214.155:.ssh/authorized_keys2
+
+useradd -m -g staff -s /bin/bash deployer
+
+#setup /etc/sudoers file - %staff ALL=(ALL) ALL
+
+#installing MySQL
+apt-get install build-essential mysql-server libmysqlclient15-dev  -y
+
+#installing XML libraries
+apt-get install libxml2-dev libxslt1-dev libmagickcore2 imagemagick -y
+
+#installing imagemagick
+apt-get install libmagickcore2 imagemagick -y
+
+#installing nginx and monit and ufw
+
+apt-get install nginx monit ufw
+
+#setting up ufw
+ufw enable
+
+ufw allow 22
+
+ufw deny 22
+
+ufw delete deny 22
+
+ufw status
+
+configurar nginx, monit e unicorn

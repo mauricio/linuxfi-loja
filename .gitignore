@@ -2,3 +2,4 @@
 *.pid
 nbproject/*
 public/system
+.DS_Store
