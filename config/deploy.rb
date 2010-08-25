@@ -5,10 +5,10 @@
 set :use_sudo,            false
 set :git_shallow_clone,   1
 set :keep_releases,       5
-set :application,         "linuxfi-lojas"
+set :application,         "shop"
 set :user,                "deployer"
 set :password,            "asdfg"
-set :deploy_to,           "/home/deployer/loja"
+set :deploy_to,           "/home/deployer/shop"
 set :runner,              "deployer"
 set :repository,          "git@github.com:mauricio/linuxfi-loja.git"
 set :scm,                 :git
@@ -17,9 +17,9 @@ set :real_revision, 			lambda { source.query_revision(revision) { |cmd| capture(
 ssh_options[:paranoid]    = false
 default_run_options[:pty] = true
 
-role :app, "184.106.214.155"
-role :web, "184.106.214.155"
-role :db,  "184.106.214.155", :primary => true
+role :app, "184.106.215.175"
+role :web, "184.106.215.175"
+role :db,  "184.106.215.175", :primary => true
 
 namespace :deploy do
 

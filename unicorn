@@ -7,20 +7,20 @@
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
 # Short-Description: starts the unicorn web server
-# Description:       starts unicorn using start-stop-daemon
+# Description:       starts unicorn
 ### END INIT INFO
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 DAEMON=/usr/bin/unicorn_rails
-DAEMON_OPTS="-c /home/deployer/usedcisco/current/unicorn.rb -E production -D"
+DAEMON_OPTS="-c /home/deployer/shop/current/unicorn.rb -E production -D"
 NAME=unicorn_rails
 DESC=unicorn_rails
-PID=/home/deployer/usedcisco/shared/pids/unicorn.pid
+PID=/home/deployer/shop/shared/pids/unicorn.pid
 
 case "$1" in
   start)
 	echo -n "Starting $DESC: "
-	start-stop-daemon --start --quiet --pidfile $PID --exec $DAEMON -- $DAEMON_OPTS || true
+	$DAEMON DAEMON_OPTS
 	echo "$NAME."
 	;;
   stop)
@@ -28,11 +28,11 @@ case "$1" in
         kill -QUIT `cat $PID`
 	echo "$NAME."
 	;;
-  restart|force-reload)
+  restart)
 	echo -n "Restarting $DESC: "
         kill -QUIT `cat $PID`
 	sleep 1
-	start-stop-daemon --start --quiet --pidfile $PID --exec $DAEMON -- $DAEMON_OPTS || true
+	$DAEMON DAEMON_OPTS
 	echo "$NAME."
 	;;
   reload)
@@ -40,11 +40,8 @@ case "$1" in
         kill -HUP `cat $PID`
         echo "$NAME."
         ;;
-  status)
-	status_of_proc -p /home/deployer/usedcisco/shared/pids/unicorn.pid "$DAEMON" nginx && exit 0 || exit $?
-	;;
   *)
-	echo "Usage: $NAME {start|stop|restart|reload|force-reload|status}" >&2
+	echo "Usage: $NAME {start|stop|restart|reload}" >&2
 	exit 1
 	;;
 esac

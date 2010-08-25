@@ -1,22 +1,30 @@
-    upstream loja {
+    # as we’re going to use Unicorn as the application server
+    # we’re not going to use common sockets
+    # but Unix sockets for faster communication
+    upstream shop {
       # fail_timeout=0 means we always retry an upstream even if it failed
       # to return a good HTTP response (in case the Unicorn master nukes a
       # single worker for timing out).
 
       # for UNIX domain socket setups:
-      server unix:/tmp/.loja fail_timeout=0;
+      server unix:/tmp/shop.socket fail_timeout=0;
     }
 
     server {
+        # if you're running multiple servers, instead of "default" you should
+        # put your main domain name here
         listen 80 default;
+
+        # you could put a list of other domain names this application answers
         server_name localhost;
 
-        root /home/deployer/current/public;
+        root /home/deployer/shop/current/public;
         access_log  on;
         rewrite_log on;
 
         location / {
-            proxy_pass  http://loja;
+            #all requests are sent to the UNIX socket
+            proxy_pass  http://shop;
             proxy_redirect     off;
 
             proxy_set_header   Host             $host;
@@ -36,8 +44,11 @@
             proxy_temp_file_write_size 64k;
         }
 
+        # if the request is for a static resource, nginx should serve it directly
+        # and add a far future expires header to it, making the browser
+        # cache the resource and navigate faster over the website
         location ~ ^/(images|javascripts|stylesheets|system)/  {
-          root /home/deployer/loja/current/public;
+          root /home/deployer/shop/current/public;
           expires max;
           break;
         }
