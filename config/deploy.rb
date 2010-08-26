@@ -12,14 +12,13 @@ set :deploy_to,           "/home/deployer/shop"
 set :runner,              "deployer"
 set :repository,          "git@github.com:mauricio/linuxfi-loja.git"
 set :scm,                 :git
-set :real_revision, 			lambda { source.query_revision(revision) { |cmd| capture(cmd) } }
 
 ssh_options[:paranoid]    = false
 default_run_options[:pty] = true
 
-role :app, "184.106.215.175"
-role :web, "184.106.215.175"
-role :db,  "184.106.215.175", :primary => true
+role :app, "184.106.212.205"
+role :web, "184.106.212.205"
+role :db,  "184.106.212.205", :primary => true
 
 namespace :deploy do
 

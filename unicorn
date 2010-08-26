@@ -20,7 +20,7 @@ PID=/home/deployer/shop/shared/pids/unicorn.pid
 case "$1" in
   start)
 	echo -n "Starting $DESC: "
-	$DAEMON DAEMON_OPTS
+	$DAEMON $DAEMON_OPTS
 	echo "$NAME."
 	;;
   stop)
@@ -32,7 +32,7 @@ case "$1" in
 	echo -n "Restarting $DESC: "
         kill -QUIT `cat $PID`
 	sleep 1
-	$DAEMON DAEMON_OPTS
+	$DAEMON $DAEMON_OPTS
 	echo "$NAME."
 	;;
   reload)
